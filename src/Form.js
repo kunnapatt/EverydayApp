@@ -92,11 +92,13 @@ class Form extends React.Component {
                </MuiPickersUtilsProvider>
                <IconButton
                   onClick={this.handleClickAdd}
+                  style={{margin: -10}}
                >
                   <Add />
                </IconButton>
                <IconButton
                   onClick={this.handleClickRemove}
+                  style={{margin: -10}}
                >
                   <Remove />
                </IconButton>
