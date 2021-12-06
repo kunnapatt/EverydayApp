@@ -1,32 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import Navbar from './Navbar' ;
 import reportWebVitals from './reportWebVitals';
-import Form from './Form' ;
-import Sakura from './sakura' ;
-import Background from './background' ;
-import './sakura.css' ;
-import { TextField, Grid, Button, Icon, IconButton } from '@material-ui/core' ;
+import DrawerRight from './components/sidebar';
+import { Route, BrowserRouter, Link, Switch, withRouter } from 'react-router-dom';
+
+import './css/sakura.css';
+import Home from './components/home';
+
+const webs = ["/", "/myimage", "/About", "/post", "/project"];
+const a = ["/myimage", "/About", "/post", "/project"];
+
+
+const componentweb = a.map((p, i) => {
+    return <Route path={p}
+        render={
+            () => < div style={
+                { position: "absolute" }} > <h1> {p} </h1></div >
+        }
+        key={i}
+    />
+});
 
 ReactDOM.render(
-  <React.StrictMode>
-    {/* <Form />, */}
-    {/* <div styles={test}> */}
-    {/* <h1>AAA</h1> */}
-      {/* <Button variant="contained" color="primary" onClick={() => {
-        const el = document.querySelector(".aaa") ;
-        console.log(el) ;
-        el.classList.add('aaaclick') ;
-       }}>AAA</Button> */}
-      <Background></Background>
-      <Sakura></Sakura>
-  {/* //   <App /> */}
-  {/* //   <Navbar /> */}
-  </React.StrictMode>,
-  // button,
-  document.getElementById('root')
+    <React.StrictMode>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/"
+                    component={Home}
+                /> {componentweb}
+
+                {
+                    /* <Route path="/myimage"  />
+                                <Route path="/About" render={() => <div style={{position: "absolute"}}><h1 > About </h1></div>} />
+                                <Route path="/post" render={() => <div style={{position: "absolute"}}><h1 > Post </h1></div>} />
+                                <Route path="/project" render={() => <div style={{position: "absolute"}}><h1 > Project </h1></div>} /> */
+                } 
+            </Switch> <DrawerRight webs={webs} > </DrawerRight> 
+        </BrowserRouter > 
+    </React.StrictMode>,
+                // button,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,0 +1,16 @@
+.Sidebartext {
+    background-color:blue ;
+    text-align: center;
+}
+
+.Sidebartext:hover {
+    background-color: #fe7f9c ;
+}
+
+.ListItem {
+    background-color:blue ;
+}
+
+.ListItem:hover {
+    background-color: #fe7f9c ;
+}
